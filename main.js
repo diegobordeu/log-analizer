@@ -100,6 +100,7 @@ const parseLine = (line) => {
 }
 
 const isErrorLine = (line) => {
+  if(line.include(' Error: Not Found')) return true;
   return !line.split('at ')[1];
 }
 
