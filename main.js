@@ -11,7 +11,8 @@ var textByLine = text.split("\n");
 
 
 const formatDate = (str) => {
-  const splited = str.split(' [');
+  const splited = str.split(' ');
+  if(!splited[1]) return;
   const test = moment(splited[0]);
   return test.format();
 }
@@ -71,11 +72,24 @@ const delay = (ms) => {
 const main = async () => {
   console.log({herma: textByLine.length});
   for (let i = 0; i < textByLine.length; i++) {
-    console.log(textByLine[i]);
-    // if (i === textByLine.length - 100 ) console.log('final', formatDate(textByLine[i]));
-    // if (i === 0 ) console.log('initial', formatDate(textByLine[i]));
+    const line = textByLine[i];
+    if (isErrorLine(line)){
+      console.log(parseLine(line));
+    }
     await delay(1);
   }
+}
+
+
+const parseLine = (line) => {
+  const date = formatDate(line);
+  const responseTime = getResponseTime(line);
+  const route = getRoute(line);
+  return {date, responseTime, route}
+}
+
+const isErrorLine = (line) => {
+  return !line.split('at ')[1];
 }
 
 main().then((a) => {
