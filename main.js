@@ -1,18 +1,48 @@
 // For reading .txt file code block
 var fs = require("fs");
-var text = fs.readFileSync("./testLog.txt").toString();
-console.log(text);
+const moment = require('moment');
+var text = fs.readFileSync("./000000 (1)").toString();
+
+// console.log(text);
 
 var textByLine = text.split("\n");
+// console.log(textByLine);
+
+
+
+const formatDate = (str) => {
+  const splited = str.split(' [');
+  const test = moment(splited[0]);
+  return test.format();
+}
+
+
+const getResponseTime = (input) => {
+  const r = input.split('ms ');
+  if (!r[1]) return;
+  const p = r[1].split(' "');
+  if (!p[0]) return;
+  return p[0];
+}
+
+const getRoute = (input) => {
+  const r = input.split('] ');
+  if (!r[1]) return;
+  const p = r[1].split(' HTTP');
+  if (!p[0]) return;
+  return p[0];
+}
+
+
 
 
 const INIZIALIZER = '/var/log/nodejs/nodejs.log';
 const FINALIZER = '/var/log/nginx/error.log';
 
-const initial = textByLine.indexOf(INIZIALIZER);
-const final = textByLine.indexOf(FINALIZER);
+// const initial = textByLine.indexOf(INIZIALIZER);
+// const final = textByLine.indexOf(FINALIZER);
 
-console.log(initial, final);
+// console.log(initial, final);
 
 const analizeLine = () => {
 
@@ -20,9 +50,13 @@ const analizeLine = () => {
 
 const getTime = (input) => {
   const p1 = input.split('[');
-  const p2 = p1[1];
-  const p3 = p2.split(']');
-  return p3[0];
+  if (!p1[1]) return;
+  const p2 = p1[1].split(']');;
+  const strDate = p2[0];
+  const date = new Date();
+  console.log(new Date(p2[0]));
+  
+  return p2[0];
 }
 
 const delay = (ms) => {
@@ -35,9 +69,12 @@ const delay = (ms) => {
 
 
 const main = async () => {
-  for (let i = initial; i < final; i++) {
-    console.log(getTime(textByLine[i]));
-    await delay(100);
+  console.log({herma: textByLine.length});
+  for (let i = 0; i < textByLine.length; i++) {
+    console.log(textByLine[i]);
+    // if (i === textByLine.length - 100 ) console.log('final', formatDate(textByLine[i]));
+    // if (i === 0 ) console.log('initial', formatDate(textByLine[i]));
+    await delay(1);
   }
 }
 
