@@ -37,6 +37,7 @@ const getRoute = (input) => {
   if (!ANALIZE_ONLY_ANNA) return p[0];
   const route = p[0];
   filterFromQuery(route);
+  sortQuery(route)
   return route.includes('anna') ?  route : undefined;
 }
 
@@ -48,13 +49,25 @@ const filterFromQuery = (route) => {
     filter.push(rest[0]);
     if (rest[1] === '&') filter.push(rest[1]);
     filter = filter.join('');
-    // console.log(filter);
     route = route.replace(filter, '');
-    // console.log(route.length);
-    
     if (route.split('')[route.length - 1] === '&') route = route.substring(0, route.length - 1);
     return route
   } else return;
+}
+
+const sortQuery = (route) => {
+  parts = route.split('?');
+  if (!parts[1]) return;
+  let query = parts[1];
+  query = query.split('&');
+  query = query.sort();
+  const newQuery = [];
+  for (let i = 0; i < query.length; i++) {
+    newQuery.push(query[i]);
+    if(i === query.length - 1) newQuery.push('&');
+  }
+  console.log(newQuery.join(''));
+  route = parts[0].push('?').push(newQuery).join('');
 }
 // console.log(filterFromQuery('GET /anna/impression/count/enduser?display=initial_portal&accessible_by=1'));
 // console.log(filterFromQuery('GET /anna/impression/count/enduser?accessible_by=1&display=initial_portal'));
