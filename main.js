@@ -4,7 +4,7 @@ const moment = require('moment');
 const text = fs.readFileSync("./000000 (4)").toString();
 
 const ANALIZE_ONLY_ANNA = true;
-const RESULTS_LENGTH = 100;
+const RESULTS_LENGTH = 70;
 
 // console.log(text);
 
@@ -35,8 +35,29 @@ const getRoute = (input) => {
   const p = r[1].split(' HTTP');
   if (!p[0]) return;
   if (!ANALIZE_ONLY_ANNA) return p[0];
-  else return p[0].includes('anna') ?  p[0] : undefined;
+  const route = p[0];
+  filterFromQuery(route);
+  return route.includes('anna') ?  route : undefined;
 }
+
+const filterFromQuery = (route) => {
+  if (route.includes('accessible_by=')){
+    const strArray = route.split('accessible_by=');
+    let rest = strArray[1].split('');
+    let filter = 'accessible_by='.split('');
+    filter.push(rest[0]);
+    if (rest[1] === '&') filter.push(rest[1]);
+    filter = filter.join('');
+    // console.log(filter);
+    route = route.replace(filter, '');
+    // console.log(route.length);
+    
+    if (route.split('')[route.length - 1] === '&') route = route.substring(0, route.length - 1);
+    return route
+  } else return;
+}
+// console.log(filterFromQuery('GET /anna/impression/count/enduser?display=initial_portal&accessible_by=1'));
+// console.log(filterFromQuery('GET /anna/impression/count/enduser?accessible_by=1&display=initial_portal'));
 
 
 const delay = (ms) => {
@@ -58,16 +79,16 @@ const main = async () => {
       if (parsed.route){
         if (!histogram[parsed.route]) histogram[parsed.route] = [];
         if (parsed.responseTime) histogram[parsed.route].push(parsed.responseTime);
-      } else {
-        errors++;
       }
+    } else {
+      errors++;
     }
-    // if (i % 100 === 0) console.log(i/textByLine.length);
+    if (i % 10000 === 0) console.log(`${i/textByLine.length*100} %`);
   }
   console.log({errors,});
   const final = metrics(histogram);
   // console.log({final,});
-  const sorted = getSortedBy(final, 'avg');
+  const sorted = getSortedBy(final, 'count');
   return sorted
 }
 
@@ -78,8 +99,13 @@ const getSortedBy = (obj, prop) => {
   for (let j = 0; j < RESULTS_LENGTH; j++) {
     for (let i = 0; i < routes.length; i++) {
       if (!response[j]) response.push({
-        route: routes[i],
-        metrics: obj[routes[i]],
+        route: '',
+        metrics: {
+          max: 1,
+          min: 1,
+          avg: 1,
+          count: 1,
+        },
       });
       if (obj[routes[i]][prop] > response[j].metrics[prop]) {
         response[j] = {
@@ -100,30 +126,28 @@ const metrics = (data) => {
   const response = {};
   for (let i = 0; i < routes.length; i++) {
     const route = routes[i];
-    // if(isNaN(Math.max(data[route]))) checkForNan(data[route]);
     response[route] = {
       max: Math.max.apply(Math, data[route]),
       min: Math.min.apply(Math, data[route]),
       avg: averge(data[route]),
       count: data[route].length,
     };
-    if(isNaN(response[route].max) || isNaN(response[route].min)) checkForNan(data[route])
   }
   return response;
 }
 
-function checkForNan(array){
-  console.log('start checking nannnnnnnnnnnnnnnnnnnnnnnnnnnnnn', array.length);
-  if(array.length ===2){
-    console.log(typeof array[0]);
-    console.log(typeof array[1]);
-  }
-  for (let i = 0; i < array.length; i++) {
-    if (isNaN(array[i])) console.log('+++++++++++++++++++++++++++++++++');
-    if (typeof array[i] !== 'number') console.log('---------------------------------');
+// function checkForNan(array){
+//   console.log('start checking nannnnnnnnnnnnnnnnnnnnnnnnnnnnnn', array.length);
+//   if(array.length ===2){
+//     console.log(typeof array[0]);
+//     console.log(typeof array[1]);
+//   }
+//   for (let i = 0; i < array.length; i++) {
+//     if (isNaN(array[i])) console.log('+++++++++++++++++++++++++++++++++');
+//     if (typeof array[i] !== 'number') console.log('---------------------------------');
     
-  }
-}
+//   }
+// }
 
 const averge = (arr) => {
   const arrAvg = array => array.reduce((a,b) => a + b, 0) / array.length
