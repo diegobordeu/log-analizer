@@ -1,12 +1,15 @@
 // For reading .txt file code block
-var fs = require("fs");
+const fs = require("fs");
 const moment = require('moment');
-var text = fs.readFileSync("./000000 (1)").toString();
+const text = fs.readFileSync("./000000 (4)").toString();
+
+const ANALIZE_ONLY_ANNA = true;
+const RESULTS_LENGTH = 100;
 
 // console.log(text);
 
 var textByLine = text.split("\n");
-// console.log(textByLine);
+console.log(textByLine.length);
 
 
 
@@ -31,7 +34,8 @@ const getRoute = (input) => {
   if (!r[1]) return;
   const p = r[1].split(' HTTP');
   if (!p[0]) return;
-  return p[0];
+  if (!ANALIZE_ONLY_ANNA) return p[0];
+  else return p[0].includes('anna') ?  p[0] : undefined;
 }
 
 
@@ -62,8 +66,34 @@ const main = async () => {
   }
   console.log({errors,});
   const final = metrics(histogram);
-  console.log({final,});
+  // console.log({final,});
+  const sorted = getSortedBy(final, 'avg');
+  return sorted
 }
+
+const getSortedBy = (obj, prop) => {
+  prop = prop || 'max';
+  const response = [];
+  const routes = Object.keys(obj);
+  for (let j = 0; j < RESULTS_LENGTH; j++) {
+    for (let i = 0; i < routes.length; i++) {
+      if (!response[j]) response.push({
+        route: routes[i],
+        metrics: obj[routes[i]],
+      });
+      if (obj[routes[i]][prop] > response[j].metrics[prop]) {
+        response[j] = {
+          route: routes[i],
+          metrics: obj[routes[i]],
+        }
+        routes.splice(i,1);
+      }
+    }
+  }
+  return response;
+}
+
+
 
 const metrics = (data) => {
   const routes = Object.keys(data);
