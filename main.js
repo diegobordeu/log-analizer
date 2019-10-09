@@ -23,8 +23,6 @@ const getResponseTime = (input) => {
   if (!r[1]) return;
   const p = r[0].split(' ');
   const f = p[p.length - 1];
-  // if (f) console.log(f);
-  // if (!f) console.log(f);
   return f * 1;
 }
 
@@ -51,7 +49,7 @@ const main = async () => {
   let errors = 0;
   for (let i = 0; i < textByLine.length; i++) {
     const line = textByLine[i];
-    if (isErrorLine(line)){
+    if (!isErrorLine(line)){
       const parsed = parseLine(line);
       if (parsed.route){
         if (!histogram[parsed.route]) histogram[parsed.route] = [];
@@ -60,8 +58,7 @@ const main = async () => {
         errors++;
       }
     }
-    // await delay(1);
-    if (i % 100 === 0) console.log(i/textByLine.length);
+    // if (i % 100 === 0) console.log(i/textByLine.length);
   }
   console.log({errors,});
   const final = metrics(histogram);
@@ -73,16 +70,30 @@ const metrics = (data) => {
   const response = {};
   for (let i = 0; i < routes.length; i++) {
     const route = routes[i];
-    response[routes[i]] = {
-      max: Math.max(data[route]),
-      min: Math.min(data[route]),
+    // if(isNaN(Math.max(data[route]))) checkForNan(data[route]);
+    response[route] = {
+      max: Math.max.apply(Math, data[route]),
+      min: Math.min.apply(Math, data[route]),
       avg: averge(data[route]),
       count: data[route].length,
-    }; 
+    };
+    if(isNaN(response[route].max) || isNaN(response[route].min)) checkForNan(data[route])
   }
   return response;
 }
 
+function checkForNan(array){
+  console.log('start checking nannnnnnnnnnnnnnnnnnnnnnnnnnnnnn', array.length);
+  if(array.length ===2){
+    console.log(typeof array[0]);
+    console.log(typeof array[1]);
+  }
+  for (let i = 0; i < array.length; i++) {
+    if (isNaN(array[i])) console.log('+++++++++++++++++++++++++++++++++');
+    if (typeof array[i] !== 'number') console.log('---------------------------------');
+    
+  }
+}
 
 const averge = (arr) => {
   const arrAvg = array => array.reduce((a,b) => a + b, 0) / array.length
@@ -94,14 +105,13 @@ const averge = (arr) => {
 const parseLine = (line) => {
   const date = formatDate(line);
   const responseTime = getResponseTime(line);
-  if (isNaN(responseTime)) console.log(line);
   const route = getRoute(line);
   return {date, responseTime, route}
 }
 
 const isErrorLine = (line) => {
-  if(line.include(' Error: Not Found')) return true;
-  return !line.split('at ')[1];
+  if(line.includes('Error: Not Found')) return true;
+  return !!line.split('at ')[1];
 }
 
 main().then((a) => {
