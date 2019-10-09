@@ -35,9 +35,9 @@ const getRoute = (input) => {
   const p = r[1].split(' HTTP');
   if (!p[0]) return;
   if (!ANALIZE_ONLY_ANNA) return p[0];
-  const route = p[0];
-  filterFromQuery(route);
-  sortQuery(route)
+  let route = p[0];
+  route = filterFromQuery(route);
+  route = sortQuery(route)
   return route.includes('anna') ?  route : undefined;
 }
 
@@ -52,7 +52,7 @@ const filterFromQuery = (route) => {
     route = route.replace(filter, '');
     if (route.split('')[route.length - 1] === '&') route = route.substring(0, route.length - 1);
     return route
-  } else return;
+  } else return route;
 }
 
 const sortQuery = (route) => {
@@ -64,10 +64,11 @@ const sortQuery = (route) => {
   const newQuery = [];
   for (let i = 0; i < query.length; i++) {
     newQuery.push(query[i]);
-    if(i === query.length - 1) newQuery.push('&');
+    if(i !== query.length - 1) newQuery.push('&');
   }
-  console.log(newQuery.join(''));
-  route = parts[0].push('?').push(newQuery).join('');
+  const response = [parts[0], '?', newQuery.join('')].join('');
+  console.log(response);
+  return response;
 }
 // console.log(filterFromQuery('GET /anna/impression/count/enduser?display=initial_portal&accessible_by=1'));
 // console.log(filterFromQuery('GET /anna/impression/count/enduser?accessible_by=1&display=initial_portal'));
