@@ -1,59 +1,51 @@
-{ average: 19728.5453 }
-{ route:
-   'GET /anna/impression/count/enduser?groupBy=first_day&sponsor_id=112',
-  max: 20375.836,
-  min: 20375.836,
+{ average: 7841.4779123690405 }
+{ route: 'GET /anna/impression/count/byhour?',
+  max: 20095.868,
+  min: 3014.401,
+  count: 19,
+  avg: 10765.124105263158 }
+{ route: 'GET /anna/impression/count/enduser?groupBy=first_day',
+  max: 20395.942,
+  min: 3124.829,
+  count: 20,
+  avg: 10650.89585 }
+{ route: 'GET /anna/impression/count/byday?display=initial_portal',
+  max: 20230.759,
+  min: 3634.553,
+  count: 19,
+  avg: 10369.007315789475 }
+{ route: 'GET /anna/impression/count?display=after_hotspot',
+  max: 20109.217,
+  min: 2838.896,
+  count: 20,
+  avg: 9113.53465 }
+{ route: 'GET /anna/impression/count/enduser?display=initial_portal',
+  max: 20199.758,
+  min: 3232.922,
+  count: 65,
+  avg: 7579.370876923076 }
+{ route: 'GET /anna/impression/count/enduser?',
+  max: 21524.647,
+  min: 705.848,
+  count: 87,
+  avg: 6333.427850574715 }
+{ route: 'GET /anna/impression/count/byday?is_initial=true',
+  max: 19027.059,
+  min: 2706.282,
+  count: 47,
+  avg: 6204.661638297874 }
+{ route: 'GET /anna/impression/count?',
+  max: 19896.51,
+  min: 1534.309,
+  count: 38,
+  avg: 5997.626236842105 }
+{ route: 'GET /anna/impression/count/byhour?is_initial=true',
+  max: 19029.869,
+  min: 2453.651,
+  count: 50,
+  avg: 5988.713600000001 }
+{ route: 'GET /anna/person/count?groupBy=locale&place_id=46',
+  max: 5412.417,
+  min: 5412.417,
   count: 1,
-  avg: 20375.836 }
-{ route:
-   'GET /anna/impression/count/enduser?display=initial_portal&sponsor_id=121',
-  max: 20098.484,
-  min: 20098.484,
-  count: 1,
-  avg: 20098.484 }
-{ route: 'GET /anna/impression/count/byhour?sponsor_id=112',
-  max: 19892.006,
-  min: 19892.006,
-  count: 1,
-  avg: 19892.006 }
-{ route:
-   'GET /anna/impression/count/byday?display=initial_portal&sponsor_id=121',
-  max: 19864.904,
-  min: 19864.904,
-  count: 1,
-  avg: 19864.904 }
-{ route:
-   'GET /anna/impression/count?display=initial_portal&sponsor_id=112',
-  max: 19848.215,
-  min: 19848.215,
-  count: 1,
-  avg: 19848.215 }
-{ route:
-   'GET /anna/impression/count/enduser?groupBy=first_day&sponsor_id=121',
-  max: 19705.432,
-  min: 19705.432,
-  count: 1,
-  avg: 19705.432 }
-{ route: 'GET /anna/impression/count/byhour?sponsor_id=121',
-  max: 19580.934,
-  min: 19580.934,
-  count: 1,
-  avg: 19580.934 }
-{ route:
-   'GET /anna/impression/count?display=after_hotspot&sponsor_id=121',
-  max: 19470.466,
-  min: 19470.466,
-  count: 1,
-  avg: 19470.466 }
-{ route:
-   'GET /anna/impression/count?display=after_hotspot&sponsor_id=112',
-  max: 19413.81,
-  min: 19413.81,
-  count: 1,
-  avg: 19413.81 }
-{ route:
-   'GET /anna/impression/count?display=initial_portal&sponsor_id=121',
-  max: 19035.366,
-  min: 19035.366,
-  count: 1,
-  avg: 19035.366 }
+  avg: 5412.417 }
