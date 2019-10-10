@@ -3,7 +3,7 @@ const fs = require("fs");
 const moment = require('moment');
 const text = fs.readFileSync("./000000 (4)").toString();
 
-const ANALIZE_ONLY_ANNA = true;
+const ANALIZE_ONLY_ANNA = false;
 const RESULTS_LENGTH = 70;
 
 
@@ -29,15 +29,19 @@ const getResponseTime = (input) => {
 }
 
 const getRoute = (input) => {
+
   const r = input.split('] ');
   if (!r[1]) return;
   const p = r[1].split(' HTTP');
   if (!p[0]) return;
-  if (!ANALIZE_ONLY_ANNA) return p[0];
   let route = p[0];
+  // return route;
   route = filterFromQuery(route, 'accessible_by');
-  route = sortQuery(route)
-  return route.includes('anna') ?  route : undefined;
+  route = filterFromQuery(route, 'sponsor_id');
+  route = filterFromQuery(route, 'endDate');
+  route = filterFromQuery(route, 'startDate');
+  route = sortQuery(route);
+  return route;
 }
 
 const filterFromQuery = (route, prop) => {
@@ -108,7 +112,7 @@ const main = async () => {
   }
   console.log({errors,});
   const final = metrics(histogram);
-  const sorted = getSortedBy(final, 'max');
+  const sorted = getSortedBy(final, 'avg');
   return sorted
 }
 
@@ -116,27 +120,43 @@ const getSortedBy = (obj, prop) => {
   prop = prop || 'max';
   const response = [];
   const routes = Object.keys(obj);
-  for (let j = 0; j < RESULTS_LENGTH; j++) {
-    for (let i = 0; i < routes.length; i++) {
-      if (!response[j]) response.push({
-        route: '',
-        metrics: {
-          max: 1,
-          min: 1,
-          avg: 1,
-          count: 1,
-        },
-      });
-      if (obj[routes[i]][prop] > response[j].metrics[prop]) {
-        response[j] = {
-          route: routes[i],
-          metrics: obj[routes[i]],
-        }
-        routes.splice(i,1);
-      }
-    }
+  for (let i = 0; i < routes.length; i++) {
+    const route = routes[i];  
+    const metrics = obj[route];
+    const element = {
+      route,
+      max: metrics.max || 1,
+      min: metrics.min || 1,
+      count: metrics.count || 1,
+      avg: metrics.avg || 1
+    };
+    response.push(element);
   }
+  response.sort((a,b) => {
+    return b[prop] - a[prop];
+  });
   return response;
+  // for (let j = 0; j < RESULTS_LENGTH; j++) {
+  //   for (let i = 0; i < routes.length; i++) {
+  //     if (!response[j]) response.push({
+  //       route: '',
+  //       metrics: {
+  //         max: 1,
+  //         min: 1,
+  //         avg: 1,
+  //         count: 1,
+  //       },
+  //     });
+  //     if (obj[routes[i]][prop] > response[j].metrics[prop]) {
+  //       response[j] = {
+  //         route: routes[i],
+  //         metrics: obj[routes[i]],
+  //       }
+  //       routes.splice(i,1);
+  //     }
+  //   }
+  // }
+  // return response;
 }
 
 
@@ -176,7 +196,12 @@ const isErrorLine = (line) => {
 }
 
 main().then((a) => {
-  console.log(a);
+  for (let i = 0; i < RESULTS_LENGTH; i++) {
+    const elem = a[i];
+    console.log(elem);
+    // console.log(elem.route, "avg: ", elem.avg, ", max: ", elem.max, ", min: ", elem.min, ", count: ", elem.count);
+    
+  }
 }).catch((err) => {
   console.log({err});
-})
+});
