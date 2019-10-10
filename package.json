@@ -1,0 +1,31 @@
+{
+  "name": "log-analizer",
+  "version": "1.0.0",
+  "description": "hermano",
+  "main": "main.js",
+  "dependencies": {
+    "eslint": "^6.5.1",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-angular": "^4.0.1",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegobordeu/log-analizer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diegobordeu/log-analizer/issues"
+  },
+  "homepage": "https://github.com/diegobordeu/log-analizer#readme"
+}

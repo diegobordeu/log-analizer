@@ -1,23 +1,22 @@
 // For reading .txt file code block
-const fs = require("fs");
+const fs = require('fs');
 const moment = require('moment');
-const text = fs.readFileSync("./000000 (4)").toString();
+
+const text = fs.readFileSync('./000000 (4)').toString();
 
 const ANALIZE_ONLY_ANNA = false;
 const RESULTS_LENGTH = 70;
+const TIME_FRAME = 5 * 1000; // 5 seg
 
-
-
-var textByLine = text.split("\n");
-
+const textByLine = text.split('\n');
 
 
 const formatDate = (str) => {
   const splited = str.split(' ');
-  if(!splited[1]) return;
+  if (!splited[1]) return;
   const test = moment(splited[0]);
   return test.format();
-}
+};
 
 
 const getResponseTime = (input) => {
@@ -26,10 +25,9 @@ const getResponseTime = (input) => {
   const p = r[0].split(' ');
   const f = p[p.length - 1];
   return f * 1;
-}
+};
 
 const getRoute = (input) => {
-
   const r = input.split('] ');
   if (!r[1]) return;
   const p = r[1].split(' HTTP');
@@ -41,35 +39,35 @@ const getRoute = (input) => {
   route = filterFromQuery(route, 'startDate');
   route = sortQuery(route);
   return route;
-}
+};
 
 const filterFromQuery = (route, prop) => {
   prop = prop || 'accessible_by';
-  prop += '='
-  if (route.includes(prop)){
+  prop += '=';
+  if (route.includes(prop)) {
     const strArray = route.split(prop);
-    let rest = strArray[1].split('');
+    const rest = strArray[1].split('');
     let filter = prop.split('');
     for (let i = 0; i < rest.length; i++) {
       if (rest[i] === '&') {
         filter.push(rest[i]);
-        break;    
+        break;
       }
       filter.push(rest[i]);
     }
     filter = filter.join('');
     route = route.replace(filter, '');
     if (route.split('')[route.length - 1] === '&') route = route.substring(0, route.length - 1);
-    return route
-  } else return route;
-}
+    return route;
+  } return route;
+};
 
 // console.log(filterFromQuery('GET /anna/impression/count/byhour?is_initial=true&accessible_by=111111'));
 // console.log(filterFromQuery('GET /anna/impression/count/?groupBy=times_connected&is_initial=true&n=5&place_id=50', 'groupBy'));
 
 
 const sortQuery = (route) => {
-  parts = route.split('?');
+  const parts = route.split('?');
   if (!parts[1]) return route;
   let query = parts[1];
   query = query.split('&');
@@ -77,20 +75,20 @@ const sortQuery = (route) => {
   const newQuery = [];
   for (let i = 0; i < query.length; i++) {
     newQuery.push(query[i]);
-    if(i !== query.length - 1) newQuery.push('&');
+    if (i !== query.length - 1) newQuery.push('&');
   }
   const response = [parts[0], '?', newQuery.join('')].join('');
   return response;
-}
+};
 
 
 const delay = (ms) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve();
     }, ms);
-  })
-}
+  });
+};
 
 
 const main = async () => {
@@ -98,49 +96,89 @@ const main = async () => {
   let errors = 0;
   for (let i = 0; i < textByLine.length; i++) {
     const line = textByLine[i];
-    if (!isErrorLine(line)){
+    if (!isErrorLine(line)) {
       pushResponseTime(line, histogram);
     } else {
-      errors++;
+      errors += 1;
     }
-    if (i % 10000 === 0) console.log(`${i/textByLine.length*100} %`);
+    if (i % 10000 === 0) console.log(`${i / textByLine.length * 100} %`);
   }
-  console.log({errors,});
+  console.log({ errors });
   const final = metrics(histogram);
   const sorted = getSortedBy(final, 'avg');
-  return sorted
-}
+  return sorted;
+};
+
+const main2 = async () => {
+  const report = [];
+  let errors = 0;
+  for (let i = 0; i < textByLine.length; i++) {
+    const line = textByLine[i];
+    if (!isErrorLine(line)) {
+      buildReport(line, report);
+    } else {
+      errors += 1;
+    }
+    if (i % 10000 === 0) console.log(`${i / textByLine.length * 100} %`);
+  }
+  const max = getMaxDate(report);
+  getAroundMax(max, report);
+
+};
+
+const getAroundMax = (maxDate, report) => {
+  const maxMs = new Date(maxDate).getTime();
+  for (let i = 0; i < report.length; i++) {
+    const dateMs = new Date(report[i].date).getTime();
+    if (maxMs + TIME_FRAME > dateMs && maxMs - TIME_FRAME < dateMs) {
+      console.log(report[i]);
+    }
+  }
+};
+
+const buildReport = (line, report) => {
+  const parsed = parseLine(line);
+  report.push(parsed);
+};
+
+const getMaxDate = (data) => {
+  data = data || [];
+  let max = { responseTime: 1 };
+  for (let i = 0; i < data.length; i++) {
+    if (max.responseTime < data[i].responseTime) max = data[i];
+  }
+  return max.date;
+};
 
 const pushResponseTime = (line, histogram) => {
   const parsed = parseLine(line);
-  if (parsed.route){
+  if (parsed.route) {
     if (!histogram[parsed.route]) histogram[parsed.route] = [];
     if (parsed.responseTime) histogram[parsed.route].push(parsed.responseTime);
   }
-}
+};
 
-const getSortedBy = (obj, prop) => {
+const getSortedBy = (obj, prop) => { // eslint-disable-line
   prop = prop || 'max';
   const response = [];
   const routes = Object.keys(obj);
   for (let i = 0; i < routes.length; i++) {
-    const route = routes[i];  
+    const route = routes[i];
     const metrics = obj[route];
     const element = {
       route,
       max: metrics.max || 1,
       min: metrics.min || 1,
       count: metrics.count || 1,
-      avg: metrics.avg || 1
+      avg: metrics.avg || 1,
     };
     response.push(element);
   }
-  response.sort((a,b) => {
+  response.sort((a, b) => {
     return b[prop] - a[prop];
   });
   return response;
-}
-
+};
 
 
 const metrics = (data) => {
@@ -156,34 +194,37 @@ const metrics = (data) => {
     };
   }
   return response;
-}
+};
 
 const averge = (arr) => {
-  const arrAvg = array => array.reduce((a,b) => a + b, 0) / array.length
+  const arrAvg = (array) => { return array.reduce((a, b) => { return a + b; }, 0) / array.length; };
   return arrAvg(arr);
-}
-
+};
 
 
 const parseLine = (line) => {
   const date = formatDate(line);
   const responseTime = getResponseTime(line);
   const route = getRoute(line);
-  return {date, responseTime, route}
-}
+  return { date, responseTime, route };
+};
 
 const isErrorLine = (line) => {
-  if(line.includes('Error: Not Found')) return true;
+  if (line.includes('Error: Not Found')) return true;
   return !!line.split('at ')[1];
-}
+};
 
-main().then((a) => {
-  for (let i = 0; i < RESULTS_LENGTH; i++) {
-    const elem = a[i];
-    console.log(elem);
-    // console.log(elem.route, "avg: ", elem.avg, ", max: ", elem.max, ", min: ", elem.min, ", count: ", elem.count);
-    
-  }
+// main().then((a) => {
+//   for (let i = 0; i < RESULTS_LENGTH; i++) {
+//     const elem = a[i];
+//     console.log(elem);
+//   }
+// }).catch((err) => {
+//   console.log({ err });
+// });
+
+main2().then((a) => {
+  console.log(a);
 }).catch((err) => {
-  console.log({err});
+  console.log({ err });
 });
