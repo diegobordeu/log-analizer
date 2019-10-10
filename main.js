@@ -35,7 +35,6 @@ const getRoute = (input) => {
   const p = r[1].split(' HTTP');
   if (!p[0]) return;
   let route = p[0];
-  // return route;
   route = filterFromQuery(route, 'accessible_by');
   route = filterFromQuery(route, 'sponsor_id');
   route = filterFromQuery(route, 'endDate');
@@ -100,11 +99,7 @@ const main = async () => {
   for (let i = 0; i < textByLine.length; i++) {
     const line = textByLine[i];
     if (!isErrorLine(line)){
-      const parsed = parseLine(line);
-      if (parsed.route){
-        if (!histogram[parsed.route]) histogram[parsed.route] = [];
-        if (parsed.responseTime) histogram[parsed.route].push(parsed.responseTime);
-      }
+      pushResponseTime(line, histogram);
     } else {
       errors++;
     }
@@ -114,6 +109,14 @@ const main = async () => {
   const final = metrics(histogram);
   const sorted = getSortedBy(final, 'avg');
   return sorted
+}
+
+const pushResponseTime = (line, histogram) => {
+  const parsed = parseLine(line);
+  if (parsed.route){
+    if (!histogram[parsed.route]) histogram[parsed.route] = [];
+    if (parsed.responseTime) histogram[parsed.route].push(parsed.responseTime);
+  }
 }
 
 const getSortedBy = (obj, prop) => {
@@ -136,27 +139,6 @@ const getSortedBy = (obj, prop) => {
     return b[prop] - a[prop];
   });
   return response;
-  // for (let j = 0; j < RESULTS_LENGTH; j++) {
-  //   for (let i = 0; i < routes.length; i++) {
-  //     if (!response[j]) response.push({
-  //       route: '',
-  //       metrics: {
-  //         max: 1,
-  //         min: 1,
-  //         avg: 1,
-  //         count: 1,
-  //       },
-  //     });
-  //     if (obj[routes[i]][prop] > response[j].metrics[prop]) {
-  //       response[j] = {
-  //         route: routes[i],
-  //         metrics: obj[routes[i]],
-  //       }
-  //       routes.splice(i,1);
-  //     }
-  //   }
-  // }
-  // return response;
 }
 
 
