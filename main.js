@@ -6,10 +6,9 @@ const text = fs.readFileSync("./000000 (4)").toString();
 const ANALIZE_ONLY_ANNA = true;
 const RESULTS_LENGTH = 70;
 
-// console.log(text);
+
 
 var textByLine = text.split("\n");
-console.log(textByLine.length);
 
 
 
@@ -36,24 +35,35 @@ const getRoute = (input) => {
   if (!p[0]) return;
   if (!ANALIZE_ONLY_ANNA) return p[0];
   let route = p[0];
-  route = filterFromQuery(route);
+  // route = filterFromQuery(route, 'accessible_by');
   route = sortQuery(route)
   return route.includes('anna') ?  route : undefined;
 }
 
-const filterFromQuery = (route) => {
-  if (route.includes('accessible_by=')){
-    const strArray = route.split('accessible_by=');
+const filterFromQuery = (route, prop) => {
+  prop = prop || 'accessible_by';
+  prop += '='
+  if (route.includes(prop)){
+    const strArray = route.split(prop);
     let rest = strArray[1].split('');
-    let filter = 'accessible_by='.split('');
-    filter.push(rest[0]);
-    if (rest[1] === '&') filter.push(rest[1]);
+    let filter = prop.split('');
+    for (let i = 0; i < rest.length; i++) {
+      if (rest[i] === '&') {
+        filter.push(rest[i]);
+        break;    
+      }
+      filter.push(rest[i]);
+    }
     filter = filter.join('');
     route = route.replace(filter, '');
     if (route.split('')[route.length - 1] === '&') route = route.substring(0, route.length - 1);
     return route
   } else return route;
 }
+
+// console.log(filterFromQuery('GET /anna/impression/count/byhour?is_initial=true&accessible_by=111111'));
+// console.log(filterFromQuery('GET /anna/impression/count/?groupBy=times_connected&is_initial=true&n=5&place_id=50', 'groupBy'));
+
 
 const sortQuery = (route) => {
   parts = route.split('?');
@@ -67,11 +77,8 @@ const sortQuery = (route) => {
     if(i !== query.length - 1) newQuery.push('&');
   }
   const response = [parts[0], '?', newQuery.join('')].join('');
-  // console.log(response);
   return response;
 }
-// console.log(filterFromQuery('GET /anna/impression/count/enduser?display=initial_portal&accessible_by=1'));
-// console.log(filterFromQuery('GET /anna/impression/count/enduser?accessible_by=1&display=initial_portal'));
 
 
 const delay = (ms) => {
@@ -102,7 +109,7 @@ const main = async () => {
   console.log({errors,});
   const final = metrics(histogram);
   // console.log({final,});
-  const sorted = getSortedBy(final, 'count');
+  const sorted = getSortedBy(final, 'max');
   return sorted
 }
 
@@ -150,19 +157,6 @@ const metrics = (data) => {
   return response;
 }
 
-// function checkForNan(array){
-//   console.log('start checking nannnnnnnnnnnnnnnnnnnnnnnnnnnnnn', array.length);
-//   if(array.length ===2){
-//     console.log(typeof array[0]);
-//     console.log(typeof array[1]);
-//   }
-//   for (let i = 0; i < array.length; i++) {
-//     if (isNaN(array[i])) console.log('+++++++++++++++++++++++++++++++++');
-//     if (typeof array[i] !== 'number') console.log('---------------------------------');
-    
-//   }
-// }
-
 const averge = (arr) => {
   const arrAvg = array => array.reduce((a,b) => a + b, 0) / array.length
   return arrAvg(arr);
@@ -182,8 +176,8 @@ const isErrorLine = (line) => {
   return !!line.split('at ')[1];
 }
 
-main().then((a) => {
-  console.log(a);
-}).catch((err) => {
-  console.log({err});
-})
+// main().then((a) => {
+//   console.log(a);
+// }).catch((err) => {
+//   console.log({err});
+// })
