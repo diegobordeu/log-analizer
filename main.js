@@ -57,7 +57,7 @@ const filterFromQuery = (route) => {
 
 const sortQuery = (route) => {
   parts = route.split('?');
-  if (!parts[1]) return;
+  if (!parts[1]) return route;
   let query = parts[1];
   query = query.split('&');
   query = query.sort();
@@ -67,7 +67,7 @@ const sortQuery = (route) => {
     if(i !== query.length - 1) newQuery.push('&');
   }
   const response = [parts[0], '?', newQuery.join('')].join('');
-  console.log(response);
+  // console.log(response);
   return response;
 }
 // console.log(filterFromQuery('GET /anna/impression/count/enduser?display=initial_portal&accessible_by=1'));
