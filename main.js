@@ -35,7 +35,7 @@ const getRoute = (input) => {
   if (!p[0]) return;
   if (!ANALIZE_ONLY_ANNA) return p[0];
   let route = p[0];
-  // route = filterFromQuery(route, 'accessible_by');
+  route = filterFromQuery(route, 'accessible_by');
   route = sortQuery(route)
   return route.includes('anna') ?  route : undefined;
 }
@@ -108,7 +108,6 @@ const main = async () => {
   }
   console.log({errors,});
   const final = metrics(histogram);
-  // console.log({final,});
   const sorted = getSortedBy(final, 'max');
   return sorted
 }
@@ -176,8 +175,8 @@ const isErrorLine = (line) => {
   return !!line.split('at ')[1];
 }
 
-// main().then((a) => {
-//   console.log(a);
-// }).catch((err) => {
-//   console.log({err});
-// })
+main().then((a) => {
+  console.log(a);
+}).catch((err) => {
+  console.log({err});
+})
