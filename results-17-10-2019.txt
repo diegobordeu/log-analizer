@@ -1,0 +1,57 @@
+{ errors: 117335 }
+{ average: 8954.306727272728 }
+{ route: 'GET /anna/impression/count/byhour?',
+  max: 15496.724,
+  min: 5690.251,
+  count: 10,
+  avg: 11414.664 }
+{ route: 'GET /anna/impression/count/enduser?groupBy=first_day',
+  max: 16385.371,
+  min: 2027.596,
+  count: 11,
+  avg: 10656.354545454546 }
+{ route:
+   'GET /anna/impression/count/byday?is_initial=true&place_id=65',
+  max: 18478.689,
+  min: 3743.723,
+  count: 3,
+  avg: 8959.590999999999 }
+{ route: 'GET /anna/impression/count/byday?display=initial_portal',
+  max: 15930.444,
+  min: 1455.477,
+  count: 11,
+  avg: 8777.818818181819 }
+{ route:
+   'GET /anna/impression/count/byhour?is_initial=true&place_id=65',
+  max: 17642.825,
+  min: 3942.166,
+  count: 3,
+  avg: 8739.239 }
+{ route: 'GET /anna/impression/count?display=after_hotspot',
+  max: 15213.451,
+  min: 3019.769,
+  count: 11,
+  avg: 8617.742909090908 }
+{ route:
+   'GET /anna/impression/count/byhour?is_initial=true&place_id=60',
+  max: 17644.948,
+  min: 2721.881,
+  count: 3,
+  avg: 8322.11 }
+{ route:
+   'GET /anna/impression/count/byday?is_initial=true&place_id=63',
+  max: 16914.445,
+  min: 3080.322,
+  count: 3,
+  avg: 8269.260333333334 }
+{ route: 'GET /anna/impression/count/enduser?place_id=60',
+  max: 17897.284,
+  min: 15.336,
+  count: 6,
+  avg: 7903.547 }
+{ route:
+   'GET /anna/impression/count/byhour?is_initial=true&place_id=63',
+  max: 17108.468,
+  min: 3052.587,
+  count: 3,
+  avg: 7882.739666666667 }

@@ -1,3 +1,4 @@
+{ errors: 122060 }
 { average: 7841.4779123690405 }
 { route: 'GET /anna/impression/count/byhour?',
   max: 20095.868,
