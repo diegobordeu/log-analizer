@@ -2,7 +2,7 @@
 const fs = require('fs');
 const moment = require('moment');
 
-const text = fs.readFileSync('./log-backups/RS/(25-17)-10-2019').toString();
+const text = fs.readFileSync('./log-backups/RS/(29-10 4-11)-2019').toString();
 
 const ANALIZE_ONLY_ANNA = false;
 const RESULTS_LENGTH = 10;

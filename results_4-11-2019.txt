@@ -1,0 +1,61 @@
+{ errors: 66777 }
+{ average: 3662.85974 }
+{ route: 'GET /anna/impression/count?display=after_hotspot',
+  max: 6952.07,
+  min: 2008.113,
+  count: 15,
+  avg: 3993.0924 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=64&start_date=2019-10-31',
+  max: 3652.875,
+  min: 3652.875,
+  count: 1,
+  avg: 3652.875 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=69&start_date=2019-10-31',
+  max: 3647.064,
+  min: 3647.064,
+  count: 1,
+  avg: 3647.064 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=63&start_date=2019-10-31',
+  max: 3644.513,
+  min: 3644.513,
+  count: 1,
+  avg: 3644.513 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=80&start_date=2019-10-31',
+  max: 3631.704,
+  min: 3631.704,
+  count: 1,
+  avg: 3631.704 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=43&start_date=2019-10-31',
+  max: 3624.297,
+  min: 3624.297,
+  count: 1,
+  avg: 3624.297 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=48&start_date=2019-10-31',
+  max: 3616.098,
+  min: 3616.098,
+  count: 1,
+  avg: 3616.098 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=79&start_date=2019-10-31',
+  max: 3610.466,
+  min: 3610.466,
+  count: 1,
+  avg: 3610.466 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=45&start_date=2019-10-31',
+  max: 3608.858,
+  min: 3608.858,
+  count: 1,
+  avg: 3608.858 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=65&start_date=2019-10-31',
+  max: 3599.63,
+  min: 3599.63,
+  count: 1,
+  avg: 3599.63 }
