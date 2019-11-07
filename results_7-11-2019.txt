@@ -26,64 +26,105 @@ analizing files: part1,part2,part3
 93.49105438227015 %
 98.41163619186332 %
 { errors: 82843 }
-{ average: 7583.525200000001 }
-{ route:
-   'GET /anna/interaction/count/byday?is_final=true&place_id=80&start_date=2019-11-03',
+{ average: 2810.729905384997 }
+{ route: 'GET /anna/impression/count?display=after_hotspot',
+  max: 7431.961,
+  min: 2178.063,
+  count: 6,
+  avg: 4493.520833333333 }
+{ route: 'GET /anna/info/506/excel',
+  max: 4442.933,
+  min: 4442.933,
+  count: 1,
+  avg: 4442.933 }
+{ route: 'GET /anna/person/count?groupBy=current_status',
+  max: 6061.012,
+  min: 2699.097,
+  count: 7,
+  avg: 3769.8940000000002 }
+{ route: 'GET /anna/person/count?groupBy=nationality',
+  max: 6061.649,
+  min: 2699.523,
+  count: 7,
+  avg: 3758.1125714285713 }
+{ route: 'GET /anna/interaction/count/byday?is_final=true',
   max: 7769.075,
-  min: 7769.075,
+  min: 1091.885,
+  count: 288,
+  avg: 3423.2197534722213 }
+{ route: 'GET /anna/person/count?groupBy=gender',
+  max: 6060.342,
+  min: 1764.961,
+  count: 11,
+  avg: 3210.8391818181817 }
+{ route: 'GET /anna/person/count?groupBy=age',
+  max: 6061.815,
+  min: 1771.829,
+  count: 11,
+  avg: 3063.7339090909095 }
+{ route: 'GET /anna/person/count?groupBy=locale',
+  max: 6063.175,
+  min: 1759.215,
+  count: 11,
+  avg: 3054.0523636363637 }
+{ route: 'GET /anna/impression/count?display=initial_portal',
+  max: 18806.356,
+  count: 71,
+  avg: 2954.2758732394354 }
+{ route: 'GET /anna/info/410/excel',
+  max: 2869.18,
+  min: 2869.18,
   count: 1,
-  avg: 7769.075 }
+  avg: 2869.18 }
+{ route: 'GET /anna/impression/count?',
+  max: 4967.579,
+  min: 621.768,
+  count: 12,
+  avg: 2664.1585833333334 }
+{ route: 'GET /anna/interaction/count/byhour?event_name=sponsorClick',
+  max: 2643.473,
+  min: 2056.346,
+  count: 5,
+  avg: 2384.5029999999997 }
+{ route: 'GET /anna/info/497/excel',
+  max: 2376.683,
+  min: 2376.683,
+  count: 1,
+  avg: 2376.683 }
+{ route: 'GET /anna/info/512/excel',
+  max: 2352.647,
+  min: 2352.647,
+  count: 1,
+  avg: 2352.647 }
+{ route: 'GET /anna/interaction/count/byday?',
+  max: 2412.575,
+  min: 2115.109,
+  count: 5,
+  avg: 2329.2884 }
+{ route: 'GET /anna/impression/count?is_initial=true',
+  max: 18936.548,
+  min: 7.339,
+  count: 142,
+  avg: 2085.071908450703 }
 { route:
-   'GET /anna/interaction/count/byday?is_final=true&place_id=50&start_date=2019-10-28',
-  max: 7616.432,
-  min: 7616.432,
-  count: 1,
-  avg: 7616.432 }
+   'GET /anna/interaction/count/enduser?event_name=sponsorClick',
+  max: 2833.062,
+  min: 423.647,
+  count: 36,
+  avg: 1922.2745 }
 { route:
-   'GET /anna/interaction/count/byday?is_final=true&place_id=53&start_date=2019-10-28',
-  max: 7612.498,
-  min: 7612.498,
-  count: 1,
-  avg: 7612.498 }
-{ route:
-   'GET /anna/interaction/count/byday?is_final=true&place_id=44&start_date=2019-11-03',
-  max: 7577.952,
-  min: 7577.952,
-  count: 1,
-  avg: 7577.952 }
-{ route:
-   'GET /anna/interaction/count/byday?is_final=true&place_id=50&start_date=2019-11-03',
-  max: 7561.847,
-  min: 7561.847,
-  count: 1,
-  avg: 7561.847 }
-{ route:
-   'GET /anna/interaction/count/byday?is_final=true&place_id=65&start_date=2019-11-03',
-  max: 7557.258,
-  min: 7557.258,
-  count: 1,
-  avg: 7557.258 }
-{ route:
-   'GET /anna/interaction/count/byday?is_final=true&place_id=5&start_date=2019-11-03',
-  max: 7555.235,
-  min: 7555.235,
-  count: 1,
-  avg: 7555.235 }
-{ route:
-   'GET /anna/interaction/count/byday?is_final=true&place_id=60&start_date=2019-11-03',
-  max: 7530.718,
-  min: 7530.718,
-  count: 1,
-  avg: 7530.718 }
-{ route:
-   'GET /anna/interaction/count/byday?is_final=true&place_id=43&start_date=2019-10-28',
-  max: 7527.93,
-  min: 7527.93,
-  count: 1,
-  avg: 7527.93 }
-{ route:
-   'GET /anna/interaction/count/byday?is_final=true&place_id=63&start_date=2019-11-03',
-  max: 7526.307,
-  min: 7526.307,
-  count: 1,
-  avg: 7526.307 }
+   'GET /rs/anna/api/v1/sponsorClick/by/hour?event_name=sponsorClick',
+  max: 1802.769,
+  min: 1777.708,
+  count: 2,
+  avg: 1790.2385 }
+{ route: 'GET /anna/impression/count/byhour?',
+  max: 5275.246,
+  min: 86.643,
+  count: 5,
+  avg: 1638.7604 }
+{ route: 'GET /anna/impression/count/enduser?',
+  max: 5137.231,
+  min: 5.386,
+  count: 97,
+  avg: 1631.211329896908 }
