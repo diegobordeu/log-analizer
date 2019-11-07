@@ -1,14 +1,15 @@
 // For reading .txt file code block
 const fs = require('fs');
 const moment = require('moment');
+const merger = require('./filemerger');
 
-const text = fs.readFileSync('./log-backups/RS/(29-10 4-11)-2019').toString();
+// const text = fs.readFileSync('./log-backups/RS/(29-10 4-11)-2019').toString();sd
 
 const ANALIZE_ONLY_ANNA = false;
 const RESULTS_LENGTH = 10;
 const TIME_FRAME = 1 * 1000; // 5 seg
 
-const textByLine = text.split('\n');
+// const textByLine = text.split('\n');
 
 
 const formatDate = (str) => {
@@ -82,16 +83,8 @@ const sortQuery = (route) => {
 };
 
 
-const delay = (ms) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, ms);
-  });
-};
-
-
 const main = async () => { // eslint-disable-line
+  const textByLine = await merger('././log-backups/RS/oct31-nov7-2019/');
   const histogram = {};
   const report = [];
   let errors = 0;
@@ -125,57 +118,12 @@ const getMaxAverage = (data, count) => {
   return sum / count;
 };
 
-const sortReport = (report, prop) => {
-  prop = prop || 'responseTime';
-  report = report.sort((a, b) => {
-    return b[prop] - a[prop];
-  });
-};
-
-// const main2 = async () => {
-//   const report = [];
-//   let errors = 0;
-//   for (let i = 0; i < textByLine.length; i++) {
-//     const line = textByLine[i];
-//     if (!isErrorLine(line)) {
-//       buildReport(line, report);
-//     } else {
-//       errors += 1;
-//     }
-//     if (i % 10000 === 0) console.log(`${i / textByLine.length * 100} %`);
-//   }
-//   const max = getMaxDate(report);
-//   getAroundMax(max, report);
-
-// };
-
-const getAroundMax = (report) => {
-  for (let j = 0; j < 5; j++) {
-    const maxMs = new Date(report[j].date).getTime();
-    console.log('++++++++++++++++++++++');
-    for (let i = 0; i < report.length; i++) {
-      const dateMs = new Date(report[i].date).getTime();
-      if (maxMs + TIME_FRAME > dateMs && maxMs - TIME_FRAME < dateMs) {
-        const time = new Date(new Date(report[i].date).getTime() - report[i].responseTime);
-        console.log(time.toISOString(), report[i].route, report[i].responseTime);
-      }
-    }
-  }
-};
 
 const buildReport = (line, report) => {
   const parsed = parseLine(line);
   if (parsed.responseTime) report.push(parsed);
 };
 
-const getMaxDate = (data) => {
-  data = data || [];
-  let max = { responseTime: 1 };
-  for (let i = 0; i < data.length; i++) {
-    if (max.responseTime < data[i].responseTime) max = data[i];
-  }
-  return max.date;
-};
 
 const pushResponseTime = (line, histogram) => {
   const parsed = parseLine(line);
@@ -255,3 +203,53 @@ main().then((a) => {
 // }).catch((err) => {
 //   console.log({ err });
 // });
+
+
+// const sortReport = (report, prop) => {
+//   prop = prop || 'responseTime';
+//   report = report.sort((a, b) => {
+//     return b[prop] - a[prop];
+//   });
+// };
+
+// const main2 = async () => {
+//   const report = [];
+//   let errors = 0;
+//   for (let i = 0; i < textByLine.length; i++) {
+//     const line = textByLine[i];
+//     if (!isErrorLine(line)) {
+//       buildReport(line, report);
+//     } else {
+//       errors += 1;
+//     }
+//     if (i % 10000 === 0) console.log(`${i / textByLine.length * 100} %`);
+//   }
+//   const max = getMaxDate(report);
+//   getAroundMax(max, report);
+
+// };
+
+
+// const getMaxDate = (data) => {
+//   data = data || [];
+//   let max = { responseTime: 1 };
+//   for (let i = 0; i < data.length; i++) {
+//     if (max.responseTime < data[i].responseTime) max = data[i];
+//   }
+//   return max.date;
+// };
+
+
+// const getAroundMax = (report) => {
+//   for (let j = 0; j < 5; j++) {
+//     const maxMs = new Date(report[j].date).getTime();
+//     console.log('++++++++++++++++++++++');
+//     for (let i = 0; i < report.length; i++) {
+//       const dateMs = new Date(report[i].date).getTime();
+//       if (maxMs + TIME_FRAME > dateMs && maxMs - TIME_FRAME < dateMs) {
+//         const time = new Date(new Date(report[i].date).getTime() - report[i].responseTime);
+//         console.log(time.toISOString(), report[i].route, report[i].responseTime);
+//       }
+//     }
+//   }
+// };

@@ -1,23 +1,16 @@
 // For reading .txt file code block
 const fs = require('fs');
-const path = require('path');
-
-const dir = '././log-backups/RS/oct31-nov7-2019/';
 
 
-// console.log(path.basename(dir));
-
-
-const merger = (folderDir) => { // eslint-disable-line
+const merger = (folderDir) => {
   return new Promise((resolve, reject) => {
     fs.readdir('././log-backups/RS/oct31-nov7-2019/', (err, files) => {
-      console.log(files);
+      console.log(`analizing files: ${files}`);
       if (err) return reject(new Error(err));
       const data = [];
       const sum = [];
       for (let i = 0; i < files.length; i++) {
         const text = fs.readFileSync(`${folderDir}${files[i]}`).toString().split('\n');
-        console.log(text.length);
         data.push(text);
       }
       for (let i = 0; i < data.length; i++) {
@@ -40,4 +33,6 @@ const main = async (folderDir) => {
   return sum;
 };
 
-main('././log-backups/RS/oct31-nov7-2019/');
+module.exports = main;
+
+// main('././log-backups/RS/oct31-nov7-2019/');
