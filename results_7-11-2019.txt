@@ -1,0 +1,89 @@
+analizing files: part1,part2,part3
++++++++++++++ summary +++++++++++++++++
+2019-10-31T13:42:17.768Z [31/Oct/2019:13:42:17 +0000] GET / HTTP/1.1 200 0.358 ms 120 "{}"
+2019-11-07T13:20:09.970Z [07/Nov/2019:13:20:09 +0000] GET /anna/interaction/count?accessible_by=39&event_name=sponsorClick HTTP/1.1 304 346.443 ms - "{}"
+203228
+++++++++++++++++++++++++++++++++++++++
+0 %
+4.920581809593166 %
+9.841163619186332 %
+14.761745428779498 %
+19.682327238372665 %
+24.60290904796583 %
+29.523490857558997 %
+34.44407266715216 %
+39.36465447674533 %
+44.285236286338495 %
+49.20581809593166 %
+54.12639990552483 %
+59.046981715117994 %
+63.96756352471116 %
+68.88814533430433 %
+73.80872714389749 %
+78.72930895349066 %
+83.64989076308382 %
+88.57047257267699 %
+93.49105438227015 %
+98.41163619186332 %
+{ errors: 82843 }
+{ average: 7583.525200000001 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=80&start_date=2019-11-03',
+  max: 7769.075,
+  min: 7769.075,
+  count: 1,
+  avg: 7769.075 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=50&start_date=2019-10-28',
+  max: 7616.432,
+  min: 7616.432,
+  count: 1,
+  avg: 7616.432 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=53&start_date=2019-10-28',
+  max: 7612.498,
+  min: 7612.498,
+  count: 1,
+  avg: 7612.498 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=44&start_date=2019-11-03',
+  max: 7577.952,
+  min: 7577.952,
+  count: 1,
+  avg: 7577.952 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=50&start_date=2019-11-03',
+  max: 7561.847,
+  min: 7561.847,
+  count: 1,
+  avg: 7561.847 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=65&start_date=2019-11-03',
+  max: 7557.258,
+  min: 7557.258,
+  count: 1,
+  avg: 7557.258 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=5&start_date=2019-11-03',
+  max: 7555.235,
+  min: 7555.235,
+  count: 1,
+  avg: 7555.235 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=60&start_date=2019-11-03',
+  max: 7530.718,
+  min: 7530.718,
+  count: 1,
+  avg: 7530.718 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=43&start_date=2019-10-28',
+  max: 7527.93,
+  min: 7527.93,
+  count: 1,
+  avg: 7527.93 }
+{ route:
+   'GET /anna/interaction/count/byday?is_final=true&place_id=63&start_date=2019-11-03',
+  max: 7526.307,
+  min: 7526.307,
+  count: 1,
+  avg: 7526.307 }
