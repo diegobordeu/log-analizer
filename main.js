@@ -6,7 +6,7 @@ const merger = require('./filemerger');
 // const text = fs.readFileSync('./log-backups/RS/(29-10 4-11)-2019').toString();sd
 
 const ANALIZE_ONLY_ANNA = false;
-const RESULTS_LENGTH = 10;
+const RESULTS_LENGTH = 20;
 const TIME_FRAME = 1 * 1000; // 5 seg
 
 // const textByLine = text.split('\n');
@@ -36,6 +36,8 @@ const getRoute = (input) => {
   let route = p[0];
   route = filterFromQuery(route, 'accessible_by');
   route = filterFromQuery(route, 'sponsor_id');
+  route = filterFromQuery(route, 'place_id');
+  route = filterFromQuery(route, 'start_date');
   route = filterFromQuery(route, 'endDate');
   route = filterFromQuery(route, 'startDate');
   route = sortQuery(route);
@@ -101,7 +103,7 @@ const main = async () => { // eslint-disable-line
   console.log({ errors });
   const final = metrics(histogram);
   const sorted = getSortedBy(final, 'avg');
-  const average = getMaxAverage(sorted, 10);
+  const average = getMaxAverage(sorted, RESULTS_LENGTH);
   console.log({ average });
   // sortReport(report, 'responseTime');
   // console.log({ report });
