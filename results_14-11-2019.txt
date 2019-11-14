@@ -1,0 +1,139 @@
+analizing files: part1
++++++++++++++ summary +++++++++++++++++
+2019-11-07T14:46:29.852Z [07/Nov/2019:14:46:29 +0000] GET / HTTP/1.1 200 0.367 ms 120 "{}"
+2019-11-14T11:37:28.880Z [14/Nov/2019:11:37:28 +0000] GET / HTTP/1.1 200 0.318 ms 120 "{}"
+279578
+++++++++++++++++++++++++++++++++++++++
+0 %
+3.5768193491619513 %
+7.153638698323903 %
+10.730458047485854 %
+14.307277396647805 %
+17.884096745809757 %
+21.460916094971708 %
+25.03773544413366 %
+28.61455479329561 %
+32.19137414245756 %
+35.76819349161951 %
+39.345012840781465 %
+42.921832189943416 %
+46.49865153910537 %
+50.07547088826732 %
+53.65229023742927 %
+57.22910958659122 %
+60.80592893575317 %
+64.38274828491512 %
+67.95956763407708 %
+71.53638698323903 %
+75.11320633240098 %
+78.69002568156293 %
+82.26684503072488 %
+85.84366437988683 %
+89.42048372904878 %
+92.99730307821073 %
+96.57412242737269 %
+{ errors: 150163 }
+{ average: 2573.4218012119613 }
+{ route: 'GET /anna/person/count?groupBy=nationality',
+  max: 6226.05,
+  min: 6226.05,
+  count: 1,
+  avg: 6226.05 }
+{ route: 'GET /anna/person/count?groupBy=current_status',
+  max: 6225.762,
+  min: 6225.762,
+  count: 1,
+  avg: 6225.762 }
+{ route: 'GET /anna/impression/count?display=after_hotspot',
+  max: 21339.75,
+  min: 1301.447,
+  count: 119,
+  avg: 5954.730084033616 }
+{ route: 'GET /anna/impression/count/enduser?groupBy=first_day',
+  max: 21171.639,
+  min: 9.232,
+  count: 130,
+  avg: 3762.0609999999983 }
+{ route: 'GET /anna/impression/count?display=initial_portal',
+  max: 21935.042,
+  min: 583.236,
+  count: 312,
+  avg: 3392.4887083333333 }
+{ route: 'GET /anna/impression/count/enduser?display=initial_portal',
+  max: 21705.547,
+  min: 6.959,
+  count: 186,
+  avg: 3206.1473440860213 }
+{ route: 'GET /anna/person/count?groupBy=locale',
+  max: 8320.029,
+  min: 1566.135,
+  count: 10,
+  avg: 2936.7581999999998 }
+{ route: 'GET /anna/person/count?groupBy=age',
+  max: 6239.067,
+  min: 1591.046,
+  count: 10,
+  avg: 2714.951 }
+{ route: 'GET /anna/person/count?groupBy=gender',
+  max: 6287.742,
+  min: 1565.49,
+  count: 10,
+  avg: 2712.3955 }
+{ route: 'GET /anna/impression/count/enduser?',
+  max: 21883.899,
+  min: 5.695,
+  count: 332,
+  avg: 2350.3293915662616 }
+{ route: 'GET /anna/impression/count?',
+  max: 7766.159,
+  min: 598.905,
+  count: 71,
+  avg: 2263.828183098591 }
+{ route: 'GET /anna/impression/count?is_initial=true',
+  max: 20718.249,
+  min: 748.377,
+  count: 267,
+  avg: 1795.7854082397014 }
+{ route: 'GET /anna/interaction/count?event_name=sponsorClick',
+  max: 12349.501,
+  min: 194.141,
+  count: 312,
+  avg: 1478.7491410256418 }
+{ route: 'GET /anna/interaction/count?',
+  max: 3542.248,
+  min: 684.034,
+  count: 46,
+  avg: 1396.4661956521738 }
+{ route:
+   'GET /anna/interaction/count/enduser?event_name=sponsorClick',
+  max: 12488.778,
+  min: 6.749,
+  count: 178,
+  avg: 1198.4860449438204 }
+{ route: 'GET /anna/impression/count/?groupBy=browser',
+  max: 2109.938,
+  min: 666.6,
+  count: 7,
+  avg: 893.1291428571429 }
+{ route: 'GET /anna/impression/count/?groupBy=os',
+  max: 2026.561,
+  min: 661.59,
+  count: 7,
+  avg: 886.2865714285714 }
+{ route: 'GET /anna/interaction/count?is_final=true',
+  max: 10229.999,
+  min: 171.683,
+  count: 312,
+  avg: 863.084608974359 }
+{ route:
+   'GET /impression/count/enduser?end_date=Sun%20Sep%2001%202019%2000:00:00%20GMT-0400%20(hora%20est%C3%A1ndar%20de%20Chile)',
+  max: 773.451,
+  min: 714.47,
+  count: 2,
+  avg: 743.9605 }
+{ route:
+   'GET /anna/impression/count/?groupBy=times_connected&is_initial=true&n=5',
+  max: 1254.004,
+  min: 32.198,
+  count: 5,
+  avg: 466.98699999999997 }

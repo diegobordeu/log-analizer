@@ -86,7 +86,7 @@ const sortQuery = (route) => {
 
 
 const main = async () => { // eslint-disable-line
-  const textByLine = await merger('././log-backups/RS/oct31-nov7-2019/');
+  const textByLine = await merger('./log-backups/RS/nov7-nov14-2019/');
   const histogram = {};
   const report = [];
   let errors = 0;

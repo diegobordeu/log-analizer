@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const merger = (folderDir) => {
   return new Promise((resolve, reject) => {
-    fs.readdir('././log-backups/RS/oct31-nov7-2019/', (err, files) => {
+    fs.readdir(folderDir, (err, files) => {
       console.log(`analizing files: ${files}`);
       if (err) return reject(new Error(err));
       const data = [];
