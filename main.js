@@ -5,9 +5,9 @@ const merger = require('./filemerger');
 
 // const text = fs.readFileSync('./log-backups/RS/(29-10 4-11)-2019').toString();sd
 
-const ANALIZE_ONLY_ANNA = false;
+// const ANALIZE_ONLY_ANNA = false;
 const RESULTS_LENGTH = 20;
-const TIME_FRAME = 1 * 1000; // 5 seg
+// const TIME_FRAME = 1 * 1000; // 5 seg
 
 // const textByLine = text.split('\n');
 
@@ -86,7 +86,7 @@ const sortQuery = (route) => {
 
 
 const main = async () => { // eslint-disable-line
-  const textByLine = await merger('./log-backups/RS/nov7-nov14-2019/');
+  const textByLine = await merger('./log-backups/RS/nov14-nov21-2019/');
   const histogram = {};
   const report = [];
   let errors = 0;

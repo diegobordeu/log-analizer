@@ -1,0 +1,126 @@
+analizing files: part1,part2
++++++++++++++ summary +++++++++++++++++
+2019-11-14T14:20:36.331Z [14/Nov/2019:14:20:36 +0000] GET / HTTP/1.1 200 0.355 ms 120 "{}"
+2019-11-21T10:53:43.160Z [21/Nov/2019:10:53:43 +0000] POST /api/impression/new HTTP/1.1 200 17.606 ms 21 "{"macaddress":"T-DC:BF:E9:7C:2D:7C","other":"Mozilla/5.0 (Linux; Android 7.1.1; Moto G (5S) Plus Build/NPSS26.116-26-14; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/78.0.3904.96 Mobile Safari/537.36","place_id":63,"display":"onlyasked.html","is_initial":true,"token":"16e8d98a9e4-63-T-DC:BF:E9:7C:2D:7C","hotspot_url":"/var/app/current/client/views/hotspotTemplates/welcome/production/","local_ip":"192.168.88.27","ip":"::ffff:127.0.0.1","browser":"Chrome Mobile 78.0.3904","os":"Android 7.1.1","timezone":"+03"}"
+144926
+++++++++++++++++++++++++++++++++++++++
+0 %
+6.900073140775293 %
+13.800146281550585 %
+20.700219422325876 %
+27.60029256310117 %
+34.50036570387646 %
+41.40043884465175 %
+48.30051198542705 %
+55.20058512620234 %
+62.100658266977625 %
+69.00073140775292 %
+75.90080454852821 %
+82.8008776893035 %
+89.7009508300788 %
+96.6010239708541 %
+{ errors: 7854 }
+{ average: 1037.2123240025498 }
+{ route: 'GET /anna/impression/count?display=initial_portal',
+  max: 15666.643,
+  min: 584.804,
+  count: 209,
+  avg: 2628.3983014354058 }
+{ route: 'GET /anna/person/count?groupBy=age',
+  max: 2258.731,
+  min: 1812.584,
+  count: 2,
+  avg: 2035.6575000000003 }
+{ route: 'GET /anna/person/count?groupBy=gender',
+  max: 2257.953,
+  min: 1812.598,
+  count: 2,
+  avg: 2035.2755 }
+{ route: 'GET /anna/person/count?groupBy=locale',
+  max: 2257.299,
+  min: 1805.79,
+  count: 2,
+  avg: 2031.5445 }
+{ route: 'GET /anna/impression/count/enduser?groupBy=first_day',
+  max: 15579.904,
+  min: 7.692,
+  count: 137,
+  avg: 1930.1724963503643 }
+{ route: 'GET /anna/impression/count/enduser?display=initial_portal',
+  max: 15986.933,
+  min: 8.052,
+  count: 205,
+  avg: 1875.3396195121961 }
+{ route: 'GET /anna/impression/count/enduser?',
+  max: 15711.578,
+  min: 4.932,
+  count: 352,
+  avg: 1376.2071022727284 }
+{ route: 'GET /anna/impression/count?is_initial=true',
+  max: 15831.549,
+  min: 560.963,
+  count: 214,
+  avg: 1151.22656542056 }
+{ route: 'GET /anna/impression/count/?groupBy=browser',
+  max: 1895.246,
+  min: 704.902,
+  count: 6,
+  avg: 987.1871666666666 }
+{ route: 'GET /anna/impression/count/?groupBy=os',
+  max: 1119.6,
+  min: 713.768,
+  count: 6,
+  avg: 808.241 }
+{ route:
+   'GET /anna/interaction/count/enduser?event_name=sponsorClick',
+  max: 8367.143,
+  min: 7.473,
+  count: 191,
+  avg: 805.7297905759157 }
+{ route: 'GET /anna/interaction/count?event_name=sponsorClick',
+  max: 9238.616,
+  min: 162.926,
+  count: 197,
+  avg: 753.5445786802023 }
+{ route: 'GET /anna/interaction/count?is_final=true',
+  max: 1470.263,
+  min: 168.957,
+  count: 16,
+  avg: 477.86799999999994 }
+{ route: 'GET /rs/anna/api/v1/displays/by/day?is_initial=true',
+  max: 1910.938,
+  min: 48.764,
+  count: 138,
+  avg: 344.0260507246376 }
+{ route:
+   'GET /anna/impression/count/?groupBy=times_connected&is_initial=true&n=5',
+  max: 611.906,
+  min: 45.742,
+  count: 2,
+  avg: 328.82399999999996 }
+{ route: 'GET /rs/anna/api/v1/connection/by/day?is_final=true',
+  max: 1911.283,
+  min: 43.348,
+  count: 138,
+  avg: 319.05821739130454 }
+{ route:
+   'GET /anna/fantasilandia/excel?end_date=2019-11-16%2021:58:00.000-03',
+  max: 220.436,
+  min: 220.436,
+  count: 1,
+  avg: 220.436 }
+{ route: 'GET /rs/anna/api/v1/displays/by/hour?is_initial=true',
+  max: 1542.591,
+  min: 29.331,
+  count: 138,
+  avg: 216.88223188405797 }
+{ route: 'GET /rs/anna/api/v1/connection/count?is_final=true',
+  max: 1627.754,
+  min: 19.92,
+  count: 199,
+  avg: 210.1644623115578 }
+{ route: 'GET /rs/anna/api/v1/sponsor/impression/count?',
+  max: 1008.481,
+  min: 21.737,
+  count: 63,
+  avg: 208.4633968253968 }
