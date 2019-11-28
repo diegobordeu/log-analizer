@@ -1,0 +1,130 @@
+analizing files: part1,part2
++++++++++++++ summary +++++++++++++++++
+2019-11-21T18:10:05.242Z [21/Nov/2019:18:10:04 +0000] GET / HTTP/1.1 200 0.362 ms 120 "{}"
+2019-11-28T17:53:26.072Z [28/Nov/2019:17:53:26 +0000] GET / HTTP/1.1 200 0.411 ms 120 "{}"
+173228
+++++++++++++++++++++++++++++++++++++++
+0 %
+5.772738818204909 %
+11.545477636409817 %
+17.318216454614728 %
+23.090955272819635 %
+28.863694091024545 %
+34.636432909229455 %
+40.40917172743436 %
+46.18191054563927 %
+51.95464936384418 %
+57.72738818204909 %
+63.500127000254004 %
+69.27286581845891 %
+75.04560463666382 %
+80.81834345486872 %
+86.59108227307364 %
+92.36382109127854 %
+98.13655990948345 %
+{ errors: 31008 }
+{ average: 1835.1166743047702 }
+{ route: 'GET /anna/person/count?groupBy=current_status',
+  max: 10744.89,
+  min: 2064.912,
+  count: 2,
+  avg: 6404.901 }
+{ route: 'GET /anna/person/count?groupBy=nationality',
+  max: 10735.688,
+  min: 1972.998,
+  count: 2,
+  avg: 6354.343 }
+{ route: 'GET /anna/person/count?groupBy=age',
+  max: 10796.518,
+  min: 1526.028,
+  count: 7,
+  avg: 3194.362857142857 }
+{ route: 'GET /anna/person/count?groupBy=locale',
+  max: 10731.347,
+  min: 1530.037,
+  count: 7,
+  avg: 3118.425 }
+{ route: 'GET /anna/person/count?groupBy=gender',
+  max: 10786.583,
+  min: 1527.087,
+  count: 7,
+  avg: 3047.927 }
+{ route:
+   'GET /anna/interaction/count/?groupBy=times_connected&is_final=true&n=5',
+  max: 4721.391,
+  min: 291.541,
+  count: 3,
+  avg: 2473.212 }
+{ route: 'GET /anna/impression/count?display=initial_portal',
+  max: 7077.028,
+  min: 558.962,
+  count: 64,
+  avg: 2028.3440312500009 }
+{ route: 'GET /anna/impression/count/enduser?display=initial_portal',
+  max: 7845.171,
+  min: 9.327,
+  count: 310,
+  avg: 1382.5115483870973 }
+{ route: 'GET /anna/impression/count/?groupBy=os',
+  max: 2802.57,
+  min: 587.183,
+  count: 5,
+  avg: 1115.8958 }
+{ route: 'GET /anna/interaction/count?event_name=sponsorClick',
+  max: 7861.177,
+  min: 260.037,
+  count: 60,
+  avg: 1051.6613166666668 }
+{ route: 'GET /anna/impression/count/?groupBy=browser',
+  max: 2032.543,
+  min: 573.921,
+  count: 5,
+  avg: 949.6252000000001 }
+{ route:
+   'GET /anna/impression/count/?groupBy=times_connected&is_initial=true&n=5',
+  max: 1285.796,
+  min: 542.646,
+  count: 3,
+  avg: 929.5093333333334 }
+{ route: 'GET /anna/impression/count/enduser?',
+  max: 7536.412,
+  min: 3.548,
+  count: 514,
+  avg: 897.7186692607004 }
+{ route: 'GET /anna/impression/count/enduser?groupBy=first_day',
+  max: 7642.684,
+  min: 8.069,
+  count: 198,
+  avg: 878.1916363636361 }
+{ route:
+   'GET /anna/interaction/count/enduser?event_name=sponsorClick',
+  max: 3950.753,
+  min: 8.673,
+  count: 294,
+  avg: 799.3258027210882 }
+{ route: 'GET /anna/impression/count?is_initial=true',
+  max: 4982.935,
+  min: 3.969,
+  count: 151,
+  avg: 700.982086092715 }
+{ route: 'GET /anna/person/visited/45/also/visited',
+  max: 429.912,
+  min: 429.912,
+  count: 1,
+  avg: 429.912 }
+{ route: 'GET /rs/anna/api/v1/displays/by/day?is_initial=true',
+  max: 2180.721,
+  min: 27.139,
+  count: 210,
+  avg: 360.4216904761908 }
+{ route: 'GET /rs/anna/api/v1/connection/by/day?is_final=true',
+  max: 1847.626,
+  min: 20.515,
+  count: 211,
+  avg: 321.10240758293844 }
+{ route:
+   'GET /rs/anna/api/v1/sponsorClick/count?event_name=sponsorClick',
+  max: 2241.404,
+  min: 13.181,
+  count: 440,
+  avg: 263.9611068181816 }

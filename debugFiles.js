@@ -2,7 +2,7 @@
 const fs = require('fs');
 const moment = require('moment');
 
-const text = fs.readFileSync('./log-backups/RS/nov14-nov21/').toString();
+const text = fs.readFileSync('./log-backups/RS/nov21-nov28-2019/').toString();
 // const text = fs.readFileSync('./test').toString();
 const textByLine = text.split('\n');
 
