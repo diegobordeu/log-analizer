@@ -1,0 +1,135 @@
+analizing files: part1
++++++++++++++ summary +++++++++++++++++
+2019-12-05T20:47:11.739Z [05/Dec/2019:20:47:11 +0000] GET / HTTP/1.1 200 0.413 ms 120 "{}"
+2019-12-12T17:29:53.677Z [12/Dec/2019:17:29:53 +0000] GET / HTTP/1.1 200 0.366 ms 120 "{}"
+156121
+++++++++++++++++++++++++++++++++++++++
+0 %
+6.405288205942826 %
+12.810576411885652 %
+19.21586461782848 %
+25.621152823771304 %
+32.02644102971413 %
+38.43172923565696 %
+44.837017441599784 %
+51.24230564754261 %
+57.64759385348543 %
+64.05288205942826 %
+70.4581702653711 %
+76.86345847131392 %
+83.26874667725674 %
+89.67403488319957 %
+96.0793230891424 %
+{ errors: 69462 }
+{ average: 5219.426649931401 }
+{ route:
+   'GET /impression/count/byDay?end_date=Tue%20Jan%2001%202030%2000:00:00%20GMT-0300%20(hora%20de%20verano%20de%20Chile)&is_initial=true&macaddress=T-BC:54:51:FF:23:CA',
+  max: 10223.021,
+  min: 10223.021,
+  count: 1,
+  avg: 10223.021 }
+{ route:
+   'GET /impression/count/byDay?end_date=Tue%20Jan%2001%202030%2000:00:00%20GMT-0300%20(hora%20de%20verano%20de%20Chile)&macaddress=T-58:C5:CB:13:E7:E3',
+  max: 10196.979,
+  min: 10196.979,
+  count: 1,
+  avg: 10196.979 }
+{ route:
+   'GET /impression/count?end_date=Tue%20Jan%2001%202030%2000:00:00%20GMT-0300%20(hora%20de%20verano%20de%20Chile)&group_by=display&is_initial=true&macaddress=T-BC:54:51:FF:23:CA',
+  max: 10190.699,
+  min: 10190.699,
+  count: 1,
+  avg: 10190.699 }
+{ route:
+   'GET /impression/count?end_date=Tue%20Jan%2001%202030%2000:00:00%20GMT-0300%20(hora%20de%20verano%20de%20Chile)&group_by=display&is_initial=true&macaddress=T-58:C5:CB:13:E7:E3',
+  max: 10185.677,
+  min: 10185.677,
+  count: 1,
+  avg: 10185.677 }
+{ route:
+   'GET /impression/count/byDay?end_date=Tue%20Jan%2001%202030%2000:00:00%20GMT-0300%20(hora%20de%20verano%20de%20Chile)&macaddress=T-94:0E:6B:2F:C8:66',
+  max: 10184.225,
+  min: 10184.225,
+  count: 1,
+  avg: 10184.225 }
+{ route:
+   'GET /impression/count/byDay?end_date=Tue%20Jan%2001%202030%2000:00:00%20GMT-0300%20(hora%20de%20verano%20de%20Chile)&macaddress=T-BC:54:51:FF:23:CA',
+  max: 10191.298,
+  min: 10167.737,
+  count: 2,
+  avg: 10179.5175 }
+{ route: 'GET /anna/person/count?groupBy=nationality',
+  max: 10863.6,
+  min: 581.152,
+  count: 9,
+  avg: 5941.269 }
+{ route: 'GET /anna/person/count?groupBy=current_status',
+  max: 10845.21,
+  min: 2016.31,
+  count: 9,
+  avg: 5719.535666666667 }
+{ route: 'GET /anna/person/count?groupBy=locale',
+  max: 10839.253,
+  min: 1823.611,
+  count: 10,
+  avg: 5359.642699999999 }
+{ route: 'GET /anna/person/count?groupBy=gender',
+  max: 10863.683,
+  min: 1834.669,
+  count: 10,
+  avg: 5328.227800000001 }
+{ route: 'GET /anna/person/count?groupBy=age',
+  max: 10878.798,
+  min: 1822.622,
+  count: 10,
+  avg: 5326.473 }
+{ route:
+   'GET /interaction/count/enduser?end_date=Tue%20Jan%2001%202030%2000:00:00%20GMT-0300%20(hora%20de%20verano%20de%20Chile)&is_final=true&macaddress=T-BC:54:51:FF:23:CA',
+  max: 3224.6,
+  min: 3224.6,
+  count: 1,
+  avg: 3224.6 }
+{ route:
+   'GET /interaction/count?end_date=Tue%20Jan%2001%202030%2000:00:00%20GMT-0300%20(hora%20de%20verano%20de%20Chile)&is_final=true&macaddress=T-BC:54:51:FF:23:CA',
+  max: 3192.242,
+  min: 3192.242,
+  count: 1,
+  avg: 3192.242 }
+{ route: 'GET /anna/info/506/excel',
+  max: 2877.741,
+  min: 2877.741,
+  count: 1,
+  avg: 2877.741 }
+{ route: 'GET /anna/impression/count/?groupBy=os&is_initial=true',
+  max: 1662.47,
+  min: 1055.833,
+  count: 3,
+  avg: 1287.8783333333333 }
+{ route:
+   'GET /anna/impression/count/?groupBy=browser&is_initial=true',
+  max: 1668.625,
+  min: 1055.717,
+  count: 3,
+  avg: 1271.9276666666667 }
+{ route: 'GET /anna/impression/count/enduser?display=initial_portal',
+  max: 2941.091,
+  min: 7.141,
+  count: 98,
+  avg: 1009.216857142857 }
+{ route: 'GET /anna/impression/count/enduser?',
+  max: 14318.511,
+  min: 5.704,
+  count: 257,
+  avg: 954.9012918287933 }
+{ route:
+   'GET /anna/interaction/count/enduser?event_name=sponsorClick',
+  max: 7203.632,
+  min: 7.011,
+  count: 97,
+  avg: 877.5054329896909 }
+{ route:
+   'GET /interaction/count/byDay?end_date=Tue%20Jan%2001%202030%2000:00:00%20GMT-0300%20(hora%20de%20verano%20de%20Chile)&is_final=true&macaddress=T-BC:54:51:FF:23:CA',
+  max: 1345.274,
+  min: 377.376,
+  count: 4,
+  avg: 857.25375 }
