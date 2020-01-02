@@ -1,0 +1,155 @@
+analizing files: part1,part2,part3,part4,part5,part6,part7,part8
++++++++++++++ summary +++++++++++++++++
+2019-12-23T13:22:01.516Z > accionet-web-app@0.0.5 start /var/app/current
+2019-12-30T13:00:34.171Z [30/Dec/2019:13:00:33 +0000] GET /rs/anna/api/v1/connection/count?accessible_by=1&is_final=true HTTP/1.1 200 680.287 ms 47 "{}"
+414193
+++++++++++++++++++++++++++++++++++++++
+0 %
+2.414333414615892 %
+4.828666829231784 %
+7.243000243847675 %
+9.657333658463568 %
+12.071667073079457 %
+14.48600048769535 %
+16.90033390231124 %
+19.314667316927135 %
+21.729000731543024 %
+24.143334146158914 %
+26.557667560774807 %
+28.9720009753907 %
+31.386334390006592 %
+33.80066780462248 %
+36.215001219238374 %
+38.62933463385427 %
+41.04366804847015 %
+43.45800146308605 %
+45.872334877701945 %
+48.28666829231783 %
+50.701001706933724 %
+53.11533512154961 %
+55.52966853616551 %
+57.9440019507814 %
+60.35833536539729 %
+62.772668780013184 %
+65.18700219462907 %
+67.60133560924496 %
+70.01566902386087 %
+72.43000243847675 %
+74.84433585309263 %
+77.25866926770854 %
+79.67300268232442 %
+82.0873360969403 %
+84.50166951155622 %
+86.9160029261721 %
+89.33033634078798 %
+91.74466975540389 %
+94.15900317001977 %
+96.57333658463565 %
+98.98766999925157 %
+{ errors: 223245 }
+{ average: 1563.5417275562772 }
+{ route: 'GET /anna/impression/count/?groupBy=os&is_initial=true',
+  max: 11063.647,
+  min: 1066.213,
+  count: 5,
+  avg: 4283.2714 }
+{ route:
+   'GET /anna/impression/count/?groupBy=browser&is_initial=true',
+  max: 10626.689,
+  min: 1133.598,
+  count: 5,
+  avg: 4120.8886 }
+{ route: 'GET /anna/person/count?groupBy=locale',
+  max: 4091.608,
+  min: 632.693,
+  count: 7,
+  avg: 2323.888428571429 }
+{ route: 'GET /anna/person/count?groupBy=current_status',
+  max: 4090.922,
+  min: 484.349,
+  count: 5,
+  avg: 2233.6205999999997 }
+{ route: 'GET /anna/person/count?groupBy=nationality',
+  max: 4085.091,
+  min: 475.986,
+  count: 5,
+  avg: 2230.0722 }
+{ route: 'GET /anna/person/count?groupBy=gender',
+  max: 4086.3,
+  min: 443.291,
+  count: 7,
+  avg: 2198.360857142857 }
+{ route: 'GET /anna/person/count?groupBy=age',
+  max: 4116.432,
+  min: 488.236,
+  count: 7,
+  avg: 2176.5838571428567 }
+{ route: 'GET /anna/impression/count/enduser?',
+  max: 16843.926,
+  min: 5.456,
+  count: 196,
+  avg: 1821.8674438775515 }
+{ route: 'GET /anna/impression/count/enduser?display=initial_portal',
+  max: 9347.676,
+  min: 8.65,
+  count: 143,
+  avg: 1239.5347902097901 }
+{ route:
+   'GET /anna/impression/count/?groupBy=times_connected&is_initial=true&n=5',
+  max: 2685.066,
+  min: 157.526,
+  count: 3,
+  avg: 1212.6419999999998 }
+{ route: 'GET /anna/impression/count/?groupBy=browser',
+  max: 2088.823,
+  min: 702.191,
+  count: 3,
+  avg: 1175.5483333333332 }
+{ route: 'GET /anna/impression/count/?groupBy=os',
+  max: 1886.261,
+  min: 688.336,
+  count: 3,
+  avg: 1106.5503333333334 }
+{ route:
+   'GET /anna/interaction/count/enduser?event_name=sponsorClick',
+  max: 9211.824,
+  min: 7.52,
+  count: 135,
+  avg: 1013.9749407407405 }
+{ route: 'GET /anna/impression/count/enduser?groupBy=first_day',
+  max: 9817.588,
+  min: 8.21,
+  count: 61,
+  avg: 774.8155901639341 }
+{ route: 'GET /rs/anna/api/v1/displays/by/day?is_initial=true',
+  max: 2297.586,
+  min: 1.957,
+  count: 114,
+  avg: 683.0102368421055 }
+{ route:
+   'GET /anna/fantasilandia/excel?end_date=2019-12-19%2019:47:00.000-03',
+  max: 560.96,
+  min: 560.96,
+  count: 1,
+  avg: 560.96 }
+{ route: 'GET /rs/anna/api/v1/connection/by/day?is_final=true',
+  max: 2474.568,
+  min: 3.131,
+  count: 116,
+  avg: 556.5968017241378 }
+{ route: 'GET /rs/anna/api/v1/displays/by/hour?is_initial=true',
+  max: 1993.833,
+  min: 3.502,
+  count: 115,
+  avg: 537.2365130434782 }
+{ route: 'GET /rs/anna/api/v1/connection/count?is_final=true',
+  max: 2149.274,
+  min: 24.568,
+  count: 128,
+  avg: 515.952625 }
+{ route:
+   'GET /anna/fantasilandia/excel?end_date=2019-11-03%2011:23:00.000-03',
+  max: 505.459,
+  min: 505.459,
+  count: 1,
+  avg: 505.459 }
