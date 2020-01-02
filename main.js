@@ -86,7 +86,7 @@ const sortQuery = (route) => {
 
 
 const main = async () => { // eslint-disable-line
-  const textByLine = await merger('./log-backups/RS/dic5-dic12-2019/');
+  const textByLine = await merger('./log-backups/RS/dic19-2ene-2020/');
   const histogram = {};
   const report = [];
   let errors = 0;
@@ -164,8 +164,10 @@ const metrics = (data) => {
   for (let i = 0; i < routes.length; i++) {
     const route = routes[i];
     response[route] = {
-      max: Math.max.apply(Math, data[route]),
-      min: Math.min.apply(Math, data[route]),
+      // max: Math.max.apply(Math, data[route]),
+      // min: Math.min.apply(Math, data[route]),
+      max: getMax(data[route]),
+      min: getMin(data[route]),
       avg: averge(data[route]),
       count: data[route].length,
     };
@@ -178,6 +180,25 @@ const averge = (arr) => {
   return arrAvg(arr);
 };
 
+function getMax(arr) {
+  let len = arr.length;
+  let max = -Infinity;
+  // eslint-disable-next-line no-plusplus
+  while (len--) {
+    max = arr[len] > max ? arr[len] : max;
+  }
+  return max;
+}
+
+function getMin(arr) {
+  let len = arr.length;
+  let min = Infinity;
+  // eslint-disable-next-line no-plusplus
+  while (len--) {
+    min = arr[len] < min ? arr[len] : min;
+  }
+  return min;
+}
 
 const parseLine = (line) => {
   const date = formatDate(line);
