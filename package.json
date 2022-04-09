@@ -5,7 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "eslint": "^6.5.1",
-    "moment": "^2.24.0"
+    "moment": "^2.29.2"
   },
   "devDependencies": {
     "eslint": "^5.15.3",
